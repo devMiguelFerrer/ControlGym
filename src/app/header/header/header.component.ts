@@ -9,9 +9,25 @@ import { HeaderService } from './../header.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public headerService: HeaderService) { }
+  public mostrarSideMenu: boolean;
+  public mostrarTiempo: boolean;
+  public titulo: string;
+  public tiempo: number;
+
+  constructor(public headerService: HeaderService) {
+  }
 
   ngOnInit() {
+    this.mostrarSideMenu = true;
+    this.mostrarTiempo = true;
+    this.titulo = 'Bienvenido';
+    this.tiempo = 0;
+    this.headerService.mostrarSideMenuChange.subscribe(menu => {
+      this.mostrarSideMenu = menu;
+    });
+    this.headerService.mostrarTiempoChange.subscribe(tiempo => {
+      this.mostrarTiempo = tiempo;
+    });
   }
 
   abrirMenu(): void {

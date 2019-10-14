@@ -1,6 +1,9 @@
 mat-sidenav {
     width: 250px;
 }
-mat-sidenav-content, at-sidenav-container, mat-sidenav {
+mat-sidenav-content, mat-sidenav-container, mat-sidenav {
     height: 100%;
+}
+.ml-20 {
+    margin-left: 20px;
 }

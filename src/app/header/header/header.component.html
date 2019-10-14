@@ -1,7 +1,12 @@
 
-
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" class="toolbar">
-    <span (click)="abrirMenu()">menu</span>
-    <span>titulo</span>
-    <span>time</span>
+    <div class="minW-40">
+        <button mat-icon-button *ngIf="mostrarSideMenu" (click)="headerService.abrirMenu()">
+            <mat-icon class="menuIcon pointer">menu</mat-icon>
+        </button>
+    </div>
+    <span>{{titulo}}</span>
+    <div class="minW-40">
+        <span *ngIf="mostrarTiempo">{{tiempo}}</span>
+    </div>
 </mat-toolbar>
