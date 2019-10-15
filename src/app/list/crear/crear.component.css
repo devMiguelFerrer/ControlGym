@@ -4,3 +4,27 @@
 .my-2 {
     margin: 2% 0;
 }
+mat-form-field {
+    width: 220px;
+}
+table {
+    width: 100%;
+    text-align: center;
+}
+.m-auto {
+    margin: auto !important;
+}
+.mt-1 {
+    margin-top: 1rem;
+}
+.container {
+    padding: 0rem 1rem;
+    padding-bottom: 0rem;
+}
+input {
+    text-align: center;
+}
+
+td, th {
+    padding: 0 !important;
+}

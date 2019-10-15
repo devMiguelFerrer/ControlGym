@@ -1,0 +1,13 @@
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.exerciseTitle {
+    width: 100%;
+}
+.exerciseField {
+    width: 48%;
+}
+.buttons {
+    margin-top: 1rem;
+}

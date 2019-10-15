@@ -1,12 +1,60 @@
-<div fxLayoutAlign="center" class="mt-75">
-    <mat-form-field>
-        <input matInput type="text" placeholder="Nombre de la Rutina" [value]="title" (input)="title = $event.target.value">
-    </mat-form-field>
+<div *ngIf="!mostrarBotones">
+    <div fxLayout="column" fxLayoutAlign="center center" class="mt-75">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Nombre de la Rutina" [value]="rutina.nombre" (input)="rutina.nombre = $event.target.value">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Nº de días de entrenamiento" #dataRef>
+        </mat-form-field>
+    </div>
+    <div fxLayoutAlign="center" class="mt-2">
+        <button mat-raised-button [disabled]="false" color="primary" (click)="crearRutina(dataRef.value)">Crear rutina</button>
+    </div>
 </div>
-<div fxLayoutAlign="center" class="mt-2">
-    <button mat-raised-button [disabled]="false" color="primary">Crear rutina</button>
-</div>
-<div fxLayoutAlign="space-around" class="my-2">
-    <button mat-raised-button [disabled]="false" color="primary">Añadir ejercicio</button>
-    <button mat-raised-button [disabled]="false" color="accent">Guardar rutina</button>
+<div *ngIf="mostrarBotones">
+    <mat-tab-group [selectedIndex]="indiceTab" (selectedIndexChange)="indiceTab = $event">
+        <mat-tab [label]="dia.nomdia" *ngFor="let dia of rutina.dias">
+            <div *ngFor="let ejercicio of dia.ejercicios" fxLayout="" fxLayoutAlign="" class="container">
+                <mat-card fxLayout="column" fxFlexAlign="" fxFlex="100" class="mt-1">
+                    <mat-card-header color="primary" fxLayout="row" fxFlexAlign="center">
+                        <mat-card-title>
+                            {{ ejercicio.nomejer }} 
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <table mat-table [dataSource]="ejercicio.ejercicio">
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef fxFlex="25" fxLayout="row" fxLayoutAlign="center center"> Id </th>
+                                <td mat-cell *matCellDef="let element" fxFlex="25" fxLayout="row" fxLayoutAlign="center center"> {{element.id}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="reps">
+                                <th mat-header-cell *matHeaderCellDef fxFlex="25" fxLayout="row" fxLayoutAlign="center center"> Reps </th>
+                                <td mat-cell *matCellDef="let element" fxFlex="25" fxLayout="row" fxLayoutAlign="center center">                         
+                                    <input matInput maxlength="3" #myRef type="number" [value]="element.reps">
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="time">
+                                <th mat-header-cell *matHeaderCellDef fxFlex="25" fxLayout="row" fxLayoutAlign="center center"> Descanso </th>
+                                <td mat-cell *matCellDef="let element" fxFlex="25" fxLayout="row" fxLayoutAlign="center center">
+                                    <input matInput maxlength="3" #myRef type="number" [value]="element.tiempoDescanso">     
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="kgprev">
+                                <th mat-header-cell *matHeaderCellDef fxFlex="25" fxLayout="row" fxLayoutAlign="center center"> Peso </th>
+                                <td mat-cell *matCellDef="let element" fxFlex="25" fxLayout="row" fxLayoutAlign="center center">
+                                    <input matInput maxlength="3" #myRef type="number" [value]="element.peso">
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+                        </table>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <div fxLayoutAlign="space-around" class="my-2">
+        <button mat-raised-button [disabled]="false" color="primary" (click)="addEjercicio()">Añadir ejercicio</button>
+        <button mat-raised-button [disabled]="false" color="accent" (click)="guardarRutina()">Guardar rutina</button>
+    </div>
 </div>

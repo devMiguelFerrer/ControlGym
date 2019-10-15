@@ -1,0 +1,28 @@
+<section>
+    <div class="title">Nuevo ejercicio</div>
+    <form class="form" [formGroup]="formControl" (ngSubmit)="addExercise(formControl)">
+        <mat-form-field class="exerciseTitle">
+          <input matInput placeholder="Nombre del ejercicio" class="" type="text" formControlName="title">
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field class="exerciseField">
+              <input matInput placeholder="Series" type="number" formControlName="series">
+            </mat-form-field>
+            <mat-form-field class="exerciseField">
+              <input matInput placeholder="Repeticiones" type="number" formControlName="reps">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field class="exerciseField">
+              <input matInput placeholder="Tiempo descanso" type="number" formControlName="time">
+            </mat-form-field>
+            <mat-form-field class="exerciseField">
+              <input matInput placeholder="Peso estimado" type="number" formControlName="kgprev">
+            </mat-form-field>
+        </div>
+        <div fxLayoutAlign="space-between start" class="buttons">
+            <button mat-raised-button color="primary" type="submit" [mat-dialog-close]="formControl.value" [disabled]="formControl.status === 'INVALID'">Añadir</button>
+            <button mat-raised-button color="accent" mat-dialog-close (click)="cancelExercise()">Cancelar</button>
+        </div>
+    </form>
+</section>

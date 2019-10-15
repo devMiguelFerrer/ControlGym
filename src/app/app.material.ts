@@ -7,7 +7,11 @@ import {
     MatListModule,
     MatMenuModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatCardModule,
+    MatTableModule
  } from '@angular/material';
 
 @NgModule({
@@ -19,7 +23,11 @@ import {
         MatListModule,
         MatMenuModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatCardModule,
+        MatTableModule
     ],
     exports: [
         MatToolbarModule,
@@ -29,7 +37,11 @@ import {
         MatListModule,
         MatMenuModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatCardModule,
+        MatTableModule
     ]
 })
 export class AppMaterial { }
